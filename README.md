@@ -267,7 +267,7 @@ Then you can display them using:
 
 🌐 **Live Streamlit App:**
 
-[Open Blinkit Delivery Time Predictor](https://blinkit-delivery-time-predictor-g2kbydywuxl7puxkhzmt4.streamlit.app/)
+[Open Blinkit Delivery Time Predictor](https://blinkit-delivery-time-predictor-g2kbydywuxl7puxkhzrmt4.streamlit.app/)
 
 💻 **GitHub Repository:**
 
