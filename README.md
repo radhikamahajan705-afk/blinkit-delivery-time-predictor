@@ -1,69 +1,126 @@
-# Blinkit-Delivery-Time-Predictor
-Machine learning model to predict quick-commerce delivery time using distance, traffic, and weather features. Includes SHAP explainability and a Streamlit web app for real-time predictions.
+# 🛵 Blinkit Delivery Time Predictor
 
-🛵 Blinkit Delivery Time Predictor
+An end-to-end machine learning project for predicting quick-commerce delivery time using order, distance, preparation, traffic, weather, and courier-related features.
 
-An end-to-end machine learning project that predicts quick-commerce delivery time and explains why — built and adapted for a Blinkit-style dark-store delivery context.
+The project was built as a **self-learning project to understand the complete machine learning workflow** — from data preprocessing and feature engineering to model training, evaluation, explainability, and deployment.
 
-Show Image Show Image Show Image
+---
 
-📌 Overview
+## 📌 Overview
 
-Quick-commerce platforms like Blinkit promise delivery within minutes — which means predicting delivery time accurately isn't just a modeling exercise, it directly affects customer trust and SLA commitments.
+Quick-commerce platforms depend on accurate delivery-time estimates to provide customers with realistic delivery expectations.
 
-This project builds a regression model that predicts delivery time from order-level features (distance, traffic, weather, rider experience), flags likely SLA breaches, and explains individual predictions using SHAP — then wraps it all in a live, interactive web app.
+This project explores how machine learning can be used to predict delivery time based on order-level conditions such as:
 
-✨ Features
-🎯 Delivery time prediction in minutes, based on real-world order conditions
-⚠️ SLA breach flag — predicts whether an order is likely to miss the delivery-time promise
-🔍 SHAP explainability — shows exactly which factors pushed a prediction up or down
-📊 Feature importance analysis — reveals what actually drives delivery time (spoiler: distance dominates)
-🌐 Interactive Streamlit app — enter order details and get a live prediction
-🗂️ Dataset
+- 📍 Distance between dark store and customer
+- ⏱️ Preparation / picking-packing time
+- 🛵 Delivery partner experience
+- 🌦️ Weather conditions
+- 🚦 Traffic level
+- 🕐 Time of day
+- 🚲 Vehicle type
 
-Trained on a food-delivery dataset (1,000 orders) with the following fields: distance, weather, traffic level, time of day, vehicle type, preparation time, and courier experience. Reframed for a quick-commerce context by treating restaurant-to-customer distance as dark-store-to-customer distance.
+The trained regression model is integrated into an interactive **Streamlit web application**, where users can enter order conditions and receive an estimated delivery time.
 
-🛠️ Tech Stack
-Category	Tools
-Data processing	pandas, numpy
-Modeling	scikit-learn (Random Forest, tuned via GridSearchCV), XGBoost
-Explainability	SHAP
-Deployment	Streamlit Cloud
-Development	Google Colab
+The application also provides model insights through feature importance and SHAP-based explainability.
 
-🔄 Project Workflow
-Data cleaning — handled missing values using mode (categorical) and median (numerical) imputation
-Feature engineering — created a Distance × Preparation Time interaction feature and a data-driven SLA breach flag
-Modeling — compared Random Forest vs Gradient Boosting; tuned hyperparameters via GridSearchCV, reducing the train-test R² overfitting gap from 0.19 to 0.08
-Explainability — used SHAP to understand feature-level impact on individual predictions, not just global importance
-Deployment — packaged the trained model into a Streamlit app for real-time, interactive use
+> **Note:** This is an educational project inspired by a Blinkit-style quick-commerce scenario. The model is **not an official Blinkit model** and does not use Blinkit's internal operational data.
 
-📈 Key Finding
+---
 
-Distance and its interaction with preparation time account for ~90% of the model's predictive power — weather, traffic, and vehicle type have comparatively minor impact in this dataset. This suggests that for quick-commerce platforms, dark-store placement matters more than route-condition optimization.
+## ✨ Features
 
-🚀 Try It Live
+### 🎯 Delivery Time Prediction
+Predicts estimated delivery time in minutes based on the provided order conditions.
 
-🔗 [Live App Link — add after deployment]
+### ⚠️ SLA Status
+Compares the predicted delivery time with a 30-minute delivery promise and indicates whether a delay may be expected.
 
-💻 Run Locally
-bash
-git clone https://github.com/your-username/blinkit-delivery-time-predictor.git
-cd blinkit-delivery-time-predictor
-pip install -r requirements.txt
-streamlit run app.py
+### 🔍 SHAP Explainability
+Uses SHAP to understand how individual features influence model predictions.
 
-📁 Repository Structure
-├── app.py                  # Streamlit app (UI + prediction logic)
-├── requirements.txt        # Python dependencies
-├── delivery_model.pkl      # Trained Random Forest model
-├── model_columns.pkl       # Feature column order for inference
-└── README.md
+### 📊 Feature Importance Analysis
+Shows which input features have the greatest influence on the trained model.
 
-🔮 Future Improvements
-Add real-time traffic/weather API integration
-Deploy via FastAPI + Docker for production-grade serving
-Add model monitoring for data drift detection
-Expand dataset with real dark-store geolocation data
+### 🌐 Interactive Streamlit Application
+Provides a simple interface where users can enter order details and instantly receive a prediction.
 
-Author: Radhika Mahajan — built as a self-learning project to explore end-to-end ML workflows, from data cleaning to deployment.
+### 🧩 Feature Engineering
+Includes a **Distance × Preparation Time** interaction feature to capture the combined effect of delivery distance and preparation time.
+
+### 🤖 Model Comparison & Tuning
+Multiple regression approaches were explored, followed by hyperparameter tuning using `GridSearchCV`.
+
+---
+
+## 🗂️ Dataset
+
+The model was trained using a **food-delivery dataset containing 1,000 orders**.
+
+The dataset includes:
+
+| Feature | Description |
+|---|---|
+| `Distance_km` | Distance between the delivery location and source |
+| `Weather` | Weather condition |
+| `Traffic_Level` | Traffic condition |
+| `Time_of_Day` | Time period of the order |
+| `Vehicle_Type` | Delivery vehicle |
+| `Preparation_Time_min` | Time required to prepare the order |
+| `Courier_Experience_yrs` | Delivery partner experience |
+| `Delivery_Time_min` | Target variable — actual delivery time |
+
+### Quick-Commerce Adaptation
+
+Since the original dataset represents food delivery, the project reframes the delivery scenario as:
+
+**Restaurant → Dark Store**  
+**Customer delivery distance → Dark Store-to-customer distance**
+
+This allows the dataset to be used for learning and demonstrating a quick-commerce delivery prediction workflow.
+
+> The results should therefore be interpreted as **dataset-specific machine learning findings**, not as actual operational insights about Blinkit.
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technologies |
+|---|---|
+| Programming | Python |
+| Data Processing | Pandas, NumPy |
+| Machine Learning | Scikit-learn |
+| Models | Random Forest, Gradient Boosting |
+| Hyperparameter Tuning | GridSearchCV |
+| Explainability | SHAP |
+| Web Application | Streamlit |
+| Development | Google Colab |
+| Deployment | Streamlit Cloud |
+| Version Control | Git, GitHub |
+
+---
+
+## 🔄 Machine Learning Workflow
+
+```text
+Raw Dataset
+     ↓
+Data Cleaning
+     ↓
+Missing Value Handling
+     ↓
+Feature Encoding
+     ↓
+Feature Engineering
+     ↓
+Train / Test Split
+     ↓
+Model Comparison
+     ↓
+Hyperparameter Tuning
+     ↓
+Model Evaluation
+     ↓
+SHAP Explainability
+     ↓
+Streamlit Deployment
