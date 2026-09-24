@@ -250,17 +250,6 @@ screenshots/
 ├── feature-importance.png
 └── shap-explanation.png
 ```
-
-Then you can display them using:
-
-```markdown
-![Prediction Dashboard](screenshots/prediction-dashboard.png)
-
-![Feature Importance](screenshots/feature-importance.png)
-
-![SHAP Explanation](screenshots/shap-explanation.png)
-```
-
 ---
 
 ## 🚀 Try It Live
