@@ -124,3 +124,8 @@ Model Evaluation
 SHAP Explainability
      ↓
 Streamlit Deployment
+
+## 🚀 Try It Live
+
+🌐 **Live Streamlit App:**  
+https://blinkit-delivery-time-predictor-g2kbydywuxl7puxkhzrmt4.streamlit.app/
