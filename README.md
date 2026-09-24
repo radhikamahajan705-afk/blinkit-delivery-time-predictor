@@ -127,8 +127,7 @@ Streamlit Deployment
 
 ## 🚀 Try It Live
 
-🌐 **Live Streamlit App:**
-
-https://blinkit-delivery-time-predictor-g2kbydywuxl7puxkhzrmt4.streamlit.app/
+🌐 **Live Streamlit App:**  
+[Open Blinkit Delivery Time Predictor](https://blinkit-delivery-time-predictor-g2kbydywuxl7puxkhzrmt4.streamlit.app/)
 
 
